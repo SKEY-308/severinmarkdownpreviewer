@@ -15,13 +15,41 @@
         function renderPreview() {
             document.getElementById('preview').innerHTML = marked(document.getElementById('editor').value)
         }
+
+
+        function setDefault() {
+            let defaultText = `\
+# Welcome to my markdown previewer!
+## Sub-heading...
+[Learn more about me on skey-308.github.io/](https://skey-308.github.io/)
+
+\`Inline Code\`
+
+\`\`\`
+function LineCode() {
+    return multiLineCode;
+}
+\`\`\`
+- A
+- List
+- Items
+
+> Blockquote
+
+
+![Spider image](/assets/img/spider.png "Spider image")
+
+**Bold Text**
+`
+
+            document.getElementById('editor').value = defaultText;
+            document.getElementById('preview').innerHTML = marked(defaultText)
+        }
     </script>
 
 </head>
 
-<body>
-
-
+<body onload="setDefault()">
 
     <div class="container-fluid">
 
@@ -34,8 +62,8 @@
                 <textarea class="form-control" id="editor" onkeyup="renderPreview()" rows="25"></textarea>
 
             </div>
-            <div class="col-8 text-center mt-3">
-                <h3>Previewer</h3>
+            <div class="col-8 mt-3">
+                <h3 class="text-center">Previewer</h3>
 
                 <div class="" id="preview"></div>
             </div>
